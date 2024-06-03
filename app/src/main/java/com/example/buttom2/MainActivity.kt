@@ -1,191 +1,114 @@
 package com.example.buttom2
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
 import android.widget.ImageView
 import android.widget.LinearLayout
-import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
 import com.example.buttom2.databinding.ActivityMainBinding
+
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var binding : ActivityMainBinding
-    private var selectTab = 1
+    private lateinit var binding: ActivityMainBinding
+    private var selectTab = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val homeLayout: LinearLayout = binding.homeLayout
-        val likeLayout: LinearLayout = binding.likeLayout
-        val notificationLayout: LinearLayout = binding.notificationLayout
-        val profileLayout: LinearLayout = binding.profileLayout
+        val viewPager: ViewPager2 = binding.viewPager
+        viewPager.adapter = ViewPagerAdapter(this)
 
-        val homeImage: ImageView = binding.homeIv
-        val likeImage: ImageView = binding.likeIv
-        val notificationImage: ImageView = binding.notificationIv
-        val profileImage: ImageView = binding.profileIv
+        val tabIcons = listOf(
+            R.drawable.baseline_home_s_24,
+            R.drawable.baseline_favorite_s_24,
+            R.drawable.baseline_notifications_s_24,
+            R.drawable.baseline_profile_s_24
+        )
 
-        val homeTxt: TextView = binding.homeTxt
-        val likeTxt: TextView = binding.likeTxt
-        val notificationTxt: TextView = binding.notificationTxt
-        val profileTxt: TextView = binding.profileTxt
+        val layouts = listOf(
+            binding.homeLayout,
+            binding.likeLayout,
+            binding.notificationLayout,
+            binding.profileLayout
+        )
 
-        supportFragmentManager.beginTransaction()
-            .setReorderingAllowed(true)
-            .replace(R.id.fragmentContainer, HomeFragment::class.java, null)
-            .commit()
+        viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                selectTab = position
+                updateTabIcons(tabIcons[position], layouts[position])
+            }
+        })
 
-        homeLayout.setOnClickListener {
-            if (selectTab != 1) {
+        setupTab(binding.homeLayout, 0, viewPager)
+        setupTab(binding.likeLayout, 1, viewPager)
+        setupTab(binding.notificationLayout, 2, viewPager)
+        setupTab(binding.profileLayout, 3, viewPager)
 
-                supportFragmentManager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.fragmentContainer, HomeFragment::class.java, null)
-                    .commit()
+        // Inicializar con la pestaña home
+        viewPager.setCurrentItem(0, false)
+    }
 
-                likeTxt.visibility = View.GONE
-                notificationTxt.visibility = View.GONE
-                profileTxt.visibility = View.GONE
-
-                likeImage.setImageResource(R.drawable.baseline_favorite_24)
-                notificationImage.setImageResource(R.drawable.baseline_notifications_24)
-                profileImage.setImageResource(R.drawable.baseline_profile_24)
-
-                likeLayout.setBackgroundResource(android.R.color.transparent)
-                notificationLayout.setBackgroundResource(android.R.color.transparent)
-                profileLayout.setBackgroundResource(android.R.color.transparent)
-
-                homeTxt.visibility = View.VISIBLE
-                homeImage.setImageResource(R.drawable.baseline_home_s_24)
-                homeLayout.setBackgroundResource(R.drawable.round_back_home_100)
-
-                val scaleAnimation = ScaleAnimation(
-                    0.8f, 1.0f, 1f, 1f,
-                    Animation.RELATIVE_TO_SELF, 0.0f,
-                    Animation.RELATIVE_TO_SELF, 0.0f
-                )
-                scaleAnimation.duration = 200
-                scaleAnimation.fillAfter = true
-                homeLayout.startAnimation(scaleAnimation)
-
-                selectTab = 1
+    private fun setupTab(layout: LinearLayout, tabIndex: Int, viewPager: ViewPager2) {
+        layout.setOnClickListener {
+            if (selectTab != tabIndex) {
+                viewPager.setCurrentItem(tabIndex, true)
             }
         }
+    }
 
-        likeLayout.setOnClickListener {
-            if (selectTab != 2) {
+    private fun updateTabIcons(selectedIcon: Int, selectedLayout: LinearLayout) {
+        val icons = mapOf(
+            binding.homeIv to R.drawable.baseline_home_24,
+            binding.likeIv to R.drawable.baseline_favorite_24,
+            binding.notificationIv to R.drawable.baseline_notifications_24,
+            binding.profileIv to R.drawable.baseline_profile_24
+        )
 
-                supportFragmentManager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.fragmentContainer, LikeFragment::class.java, null)
-                    .commit()
+        val selectedIcons = mapOf(
+            R.drawable.baseline_home_s_24 to binding.homeIv,
+            R.drawable.baseline_favorite_s_24 to binding.likeIv,
+            R.drawable.baseline_notifications_s_24 to binding.notificationIv,
+            R.drawable.baseline_profile_s_24 to binding.profileIv
+        )
 
-                homeTxt.visibility = View.GONE
-                notificationTxt.visibility = View.GONE
-                profileTxt.visibility = View.GONE
-
-                homeImage.setImageResource(R.drawable.baseline_home_24)
-                notificationImage.setImageResource(R.drawable.baseline_notifications_24)
-                profileImage.setImageResource(R.drawable.baseline_profile_24)
-
-                homeLayout.setBackgroundResource(android.R.color.transparent)
-                notificationLayout.setBackgroundResource(android.R.color.transparent)
-                profileLayout.setBackgroundResource(android.R.color.transparent)
-
-                likeTxt.visibility = View.VISIBLE
-                likeImage.setImageResource(R.drawable.baseline_favorite_s_24)
-                likeLayout.setBackgroundResource(R.drawable.round_back_favorite_100)
-
-                val scaleAnimation = ScaleAnimation(
-                    0.8f, 1.0f, 1f, 1f,
-                    Animation.RELATIVE_TO_SELF, 0.0f,
-                    Animation.RELATIVE_TO_SELF, 0.0f
-                )
-                scaleAnimation.duration = 200
-                scaleAnimation.fillAfter = true
-                likeLayout.startAnimation(scaleAnimation)
-
-                selectTab = 2
-            }
+        icons.forEach { (imageView, icon) ->
+            imageView.setImageResource(icon)
         }
 
-        notificationLayout.setOnClickListener {
-            if (selectTab != 3) {
+        selectedIcons[selectedIcon]?.setImageResource(selectedIcon)
 
-                supportFragmentManager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.fragmentContainer, NotificationFragment::class.java, null)
-                    .commit()
-
-                homeTxt.visibility = View.GONE
-                likeTxt.visibility = View.GONE
-                profileTxt.visibility = View.GONE
-
-                homeImage.setImageResource(R.drawable.baseline_home_24)
-                likeImage.setImageResource(R.drawable.baseline_favorite_24)
-                profileImage.setImageResource(R.drawable.baseline_profile_24)
-
-                homeLayout.setBackgroundResource(android.R.color.transparent)
-                likeLayout.setBackgroundResource(android.R.color.transparent)
-                profileLayout.setBackgroundResource(android.R.color.transparent)
-
-                notificationTxt.visibility = View.VISIBLE
-                notificationImage.setImageResource(R.drawable.baseline_notifications_s_24)
-                notificationLayout.setBackgroundResource(R.drawable.round_back_notification_100)
-
-                val scaleAnimation = ScaleAnimation(
-                    0.8f, 1.0f, 1f, 1f,
-                    Animation.RELATIVE_TO_SELF, 0.0f,
-                    Animation.RELATIVE_TO_SELF, 0.0f
-                )
-                scaleAnimation.duration = 200
-                scaleAnimation.fillAfter = true
-                notificationLayout.startAnimation(scaleAnimation)
-
-                selectTab = 3
-            }
+        listOf(binding.homeLayout, binding.likeLayout, binding.notificationLayout, binding.profileLayout).forEach {
+            it.setBackgroundResource(android.R.color.transparent)
         }
 
-        profileLayout.setOnClickListener {
-            if (selectTab != 4) {
+        selectedLayout.setBackgroundResource(getBackgroundResource(selectedIcon))
+        animateTab(selectedLayout)
+    }
 
-                supportFragmentManager.beginTransaction()
-                    .setReorderingAllowed(true)
-                    .replace(R.id.fragmentContainer, ProfileFragment::class.java, null)
-                    .commit()
-
-                homeTxt.visibility = View.GONE
-                likeTxt.visibility = View.GONE
-                notificationTxt.visibility = View.GONE
-
-                homeImage.setImageResource(R.drawable.baseline_home_24)
-                likeImage.setImageResource(R.drawable.baseline_favorite_24)
-                notificationImage.setImageResource(R.drawable.baseline_notifications_24)
-
-                homeLayout.setBackgroundResource(android.R.color.transparent)
-                likeLayout.setBackgroundResource(android.R.color.transparent)
-                notificationLayout.setBackgroundResource(android.R.color.transparent)
-
-                profileTxt.visibility = View.VISIBLE
-                profileImage.setImageResource(R.drawable.baseline_profile_s_24)
-                profileLayout.setBackgroundResource(R.drawable.round_back_profile_100)
-
-                val scaleAnimation = ScaleAnimation(
-                    0.8f, 1.0f, 1f, 1f,
-                    Animation.RELATIVE_TO_SELF, 0.0f,
-                    Animation.RELATIVE_TO_SELF, 0.0f
-                )
-                scaleAnimation.duration = 200
-                scaleAnimation.fillAfter = true
-                profileLayout.startAnimation(scaleAnimation)
-
-                selectTab = 4
-            }
+    private fun getBackgroundResource(selectedIcon: Int): Int {
+        return when (selectedIcon) {
+            R.drawable.baseline_home_s_24 -> R.drawable.round_back_home_100
+            R.drawable.baseline_favorite_s_24 -> R.drawable.round_back_favorite_100
+            R.drawable.baseline_notifications_s_24 -> R.drawable.round_back_notification_100
+            R.drawable.baseline_profile_s_24 -> R.drawable.round_back_profile_100
+            else -> android.R.color.transparent
         }
+    }
+
+    private fun animateTab(layout: LinearLayout) {
+        val scaleAnimation = ScaleAnimation(
+            0.8f, 1.0f, 1f, 1f,
+            Animation.RELATIVE_TO_SELF, 0.0f,
+            Animation.RELATIVE_TO_SELF, 0.0f
+        )
+        scaleAnimation.duration = 200
+        scaleAnimation.fillAfter = true
+        layout.startAnimation(scaleAnimation)
     }
 }

@@ -7,12 +7,6 @@
     android:background="@color/home"
     tools:context=".MainActivity">
 
-    <androidx.fragment.app.FragmentContainerView
-        android:layout_width="match_parent"
-        android:id="@+id/fragmentContainer"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/bottomBar"/>
-
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -26,8 +20,8 @@
         android:elevation="10dp"
         android:gravity="center"
         android:background="#FFFFFF"
-        android:layout_alignParentBottom="true">
-        
+        android:layout_alignParentTop="true">
+
         <LinearLayout
             android:id="@+id/homeLayout"
             android:background="@drawable/round_back_home_100"
@@ -45,17 +39,6 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_home_s_24"/>
-            
-            <TextView
-                android:id="@+id/homeTxt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Home"
-                android:textStyle="bold"
-                android:textColor="@color/home"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -75,18 +58,6 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_favorite_24"/>
-
-            <TextView
-                android:id="@+id/likeTxt"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Likes"
-                android:textStyle="bold"
-                android:textColor="@color/like"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -106,18 +77,6 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_notifications_24"/>
-
-            <TextView
-                android:id="@+id/notificationTxt"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Notification"
-                android:textStyle="bold"
-                android:textColor="@color/notification"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"/>
-
         </LinearLayout>
 
         <LinearLayout
@@ -137,20 +96,13 @@
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_profile_24"/>
-
-            <TextView
-                android:id="@+id/profileTxt"
-                android:visibility="gone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Profile"
-                android:textStyle="bold"
-                android:textColor="@color/profile"
-                android:layout_marginStart="10dp"
-                android:textSize="16sp"/>
-
         </LinearLayout>
-
     </LinearLayout>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/bottomBar"/>
 
 </RelativeLayout>
