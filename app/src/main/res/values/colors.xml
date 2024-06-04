@@ -8,6 +8,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
 
+    <color name="fondo">#E3E3E3</color>
+
     <color name="home">#1194AA</color>
     <color name="like">#C9379D</color>
     <color name="notification">#AE7E0F</color>

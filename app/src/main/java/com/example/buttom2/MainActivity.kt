@@ -1,5 +1,6 @@
 package com.example.buttom2
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
@@ -22,6 +23,16 @@ class MainActivity : AppCompatActivity() {
 
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = ViewPagerAdapter(this)
+
+        // Obtener referencia al ImageView de la lupa utilizando View Binding
+        val lupaImageView: ImageView = binding.lupa
+
+        // Agregar OnClickListener al ImageView de la lupa
+        lupaImageView.setOnClickListener {
+            // Abrir SearchActivity cuando se haga clic en la lupa
+            val intent = Intent(this, SearchActivity::class.java)
+            startActivity(intent)
+        }
 
         val tabIcons = listOf(
             R.drawable.baseline_home_s_24,

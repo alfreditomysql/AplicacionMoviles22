@@ -4,9 +4,50 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/home"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
+    <!-- Nuevo LinearLayout para el texto y la lupa -->
+    <LinearLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="1dp"
+        android:elevation="10dp"
+        android:gravity="center"
+        android:background="#FFFFFF"
+        android:layout_alignParentTop="true">
+
+        <!-- Texto "UppApp" -->
+        <TextView
+            android:id="@+id/uppAppText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="UppApp"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/home"/>
+
+        <!-- Espacio en blanco para empujar la lupa a la derecha -->
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <!-- Icono de lupa -->
+        <ImageView
+            android:id="@+id/lupa"
+            android:layout_width="40dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/baseline_search_24"/>
+    </LinearLayout>
+
+    <!-- LinearLayout para los iconos -->
     <LinearLayout
         android:id="@+id/bottomBar"
         android:layout_width="match_parent"
@@ -15,15 +56,17 @@
         android:weightSum="4"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="15dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="1dp"
         android:elevation="10dp"
         android:gravity="center"
         android:background="#FFFFFF"
-        android:layout_alignParentTop="true">
+        android:layout_below="@id/topBar">
 
+        <!-- Icono de Inicio -->
         <LinearLayout
             android:id="@+id/homeLayout"
+            android:layout_marginEnd="10dp"
             android:background="@drawable/round_back_home_100"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -35,14 +78,16 @@
 
             <ImageView
                 android:id="@+id/homeIv"
-                android:layout_width="20dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_home_s_24"/>
         </LinearLayout>
 
+        <!-- Icono de Likes -->
         <LinearLayout
             android:id="@+id/likeLayout"
+            android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -54,14 +99,16 @@
 
             <ImageView
                 android:id="@+id/likeIv"
-                android:layout_width="20dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_favorite_24"/>
         </LinearLayout>
 
+        <!-- Icono de Notificaciones -->
         <LinearLayout
             android:id="@+id/notificationLayout"
+            android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -73,14 +120,16 @@
 
             <ImageView
                 android:id="@+id/notificationIv"
-                android:layout_width="20dp"
+                android:layout_width="40dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_notifications_24"/>
         </LinearLayout>
 
+        <!-- Icono de Perfil -->
         <LinearLayout
             android:id="@+id/profileLayout"
+            android:layout_marginEnd="10dp"
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
@@ -92,7 +141,7 @@
 
             <ImageView
                 android:id="@+id/profileIv"
-                android:layout_width="20dp"
+                android:layout_width="45dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_profile_24"/>
