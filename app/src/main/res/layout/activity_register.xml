@@ -8,7 +8,7 @@
     >
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/nombre1"
+        android:id="@+id/nombreinput1"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
@@ -17,7 +17,8 @@
         app:layout_constraintTop_toBottomOf="@+id/subtitulo"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/nombre1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nombre"
@@ -28,7 +29,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password1"
+        android:id="@+id/passwordinput1"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -38,7 +39,8 @@
         app:endIconMode="password_toggle"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/password1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
@@ -51,16 +53,16 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/correo1"
+        android:id="@+id/emailinput"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
-
-        app:layout_constraintBottom_toTopOf="@+id/password1"
+        app:layout_constraintBottom_toTopOf="@+id/passwordinput1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nombre1">
+        app:layout_constraintTop_toBottomOf="@+id/nombreinput1">
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/backgorund_c"
@@ -91,17 +93,18 @@
         app:layout_constraintTop_toBottomOf="@+id/titulo1" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/password2"
+        android:id="@+id/passwordinput2"
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password1"
+        app:layout_constraintTop_toBottomOf="@+id/passwordinput1"
         app:endIconMode="password_toggle"
         >
 
-        <com.google.android.material.textfield.TextInputEditText
+        <EditText
+            android:id="@+id/passwordConfirm"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Confirm Password"
@@ -110,7 +113,7 @@
             />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
+    <Button
         android:id="@+id/btnRegister"
         android:layout_width="380dp"
         android:layout_height="55dp"
@@ -123,7 +126,7 @@
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/password2"
+        app:layout_constraintTop_toBottomOf="@+id/passwordinput2"
         android:clickable="true"
         />
 

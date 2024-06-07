@@ -3,17 +3,45 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/profile"
+    android:background="@color/white"
     tools:context=".HomeFragment">
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="15dp"
+        android:paddingBottom="1dp"
+        android:elevation="10dp"
         android:gravity="center"
-        android:text="Profile Fragment"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        />
+        android:background="#FFFFFF"
+        android:layout_alignParentTop="true">
+
+        <TextView
+            android:id="@+id/usurio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Usuario"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/home"/>
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"/>
+
+        <ImageView
+
+            android:id="@+id/logout_icon"
+            android:layout_width="45dp"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:src="@drawable/baseline_logout_24"/>
+    </LinearLayout>
+
 
 </FrameLayout>
