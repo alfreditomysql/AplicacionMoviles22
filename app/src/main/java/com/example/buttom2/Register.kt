@@ -24,12 +24,6 @@ class Register : AppCompatActivity() {
     private lateinit var txtConfirmPassword: EditText
 
 
-    private lateinit var name:EditText
-    private lateinit var email:EditText
-    private lateinit var password:EditText
-    private lateinit var conPassword:EditText
-    private lateinit var btnIniciarSesion:Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -41,29 +35,12 @@ class Register : AppCompatActivity() {
 
         txtPassword = findViewById(R.id.password1)
         txtConfirmPassword = findViewById(R.id.passwordConfirm)
-
-        val name = findViewById<EditText>(R.id.nombre1)
-        val email = findViewById<EditText>(R.id.email)
-        val psw = findViewById<EditText>(R.id.password1)
-        val psw_repit = findViewById<EditText>(R.id.passwordConfirm)
-        val btn_register = findViewById<Button>(R.id.btnRegister)
-
+        
         //binding.btnRegister.setOnClickListener { validate() }
         binding.iniciarSesion.setOnClickListener { goLoginActivity() }
         binding.btnRegister.setOnClickListener{ clickBtnRegister() }
     }
 
-    private fun validate (){
-        val result = arrayOf(validateNombre(), validateCorreo(), validatePassword(), validatePassword2())
-
-        if (false in result){
-            Toast.makeText(this, "Faltan llenar campos", Toast.LENGTH_SHORT).show()
-            return
-        }
-
-        Toast.makeText(this, "Cmpos verificados", Toast.LENGTH_SHORT).show()
-        goMainActivity()
-    }
 
     private fun goMainActivity(){
         startActivity(Intent(this, MainActivity::class.java))
@@ -136,8 +113,8 @@ class Register : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.11:8000/api/v1/register"
-        val body = JSONObject().apply {
+        val url = "http://192.168.141.92:8000/api/v1/register"
+        val body = JSONObject().apply{
             put("name",name)
             put("email",email)
             put("password",pass)

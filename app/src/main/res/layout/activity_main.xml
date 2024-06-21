@@ -78,7 +78,7 @@
 
             <ImageView
                 android:id="@+id/homeIv"
-                android:layout_width="40dp"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_home_s_24"/>
@@ -99,7 +99,7 @@
 
             <ImageView
                 android:id="@+id/likeIv"
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_favorite_24"/>
@@ -120,7 +120,7 @@
 
             <ImageView
                 android:id="@+id/notificationIv"
-                android:layout_width="40dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_notifications_24"/>
@@ -141,7 +141,7 @@
 
             <ImageView
                 android:id="@+id/profileIv"
-                android:layout_width="45dp"
+                android:layout_width="35dp"
                 android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:src="@drawable/baseline_profile_24"/>
