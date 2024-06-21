@@ -6,14 +6,36 @@
     android:background="@color/white"
     tools:context=".HomeFragment">
 
-    <TextView
+    <LinearLayout
+        android:paddingTop="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:src="@drawable/baseline_circle_24"
+            android:padding="10dp" />
+
+        <TextView
+            android:id="@+id/insertarPost"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:hint="¿Qué estás pensando?"
+            android:padding="13dp"
+            android:textSize="20sp"
+            android:background="@drawable/background_d"
+            android:maxLines="1"
+            android:layout_gravity="center_vertical" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/notesRecyclerView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:text="Home Fragment"
-        android:textColor="#FFFFFF"
-        android:textStyle="bold"
-        android:textSize="20sp"
-        />
+        android:layout_marginTop="80dp"
+        android:padding="16dp" />
 
 </FrameLayout>

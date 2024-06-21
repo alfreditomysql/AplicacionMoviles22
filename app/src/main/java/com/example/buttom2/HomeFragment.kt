@@ -1,10 +1,15 @@
 package com.example.buttom2
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
+import com.example.buttom2.databinding.FragmentHomeBinding
+import androidx.recyclerview.widget.LinearLayoutManager
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +26,12 @@ class HomeFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
+
+    private lateinit var db: NotesDataBaseHelper
+    private lateinit var notesAdapter: NotesAdapter
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -33,9 +44,43 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val view = binding.root
+
+        // Initialize RecyclerView and Adapter
+        db = NotesDataBaseHelper(requireContext())
+        val notesList: MutableList<Note> = db.getAllNotes().toMutableList()
+        notesAdapter = NotesAdapter(notesList, requireContext())
+        notesAdapter.enableSwipe(binding.notesRecyclerView)
+
+        binding.notesRecyclerView.apply {
+            layoutManager = LinearLayoutManager(requireContext())
+            adapter = notesAdapter
+        }
+
+        // Set OnClickListener for the insertarPost TextView
+        binding.insertarPost.setOnClickListener {
+            val intent = Intent(requireActivity(), NewPostActivity::class.java)
+            startActivity(intent)
+        }
+
+        return view
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
+    override fun onResume(){
+        super.onResume()
+        notesAdapter.refreshData(db.getAllNotes())
+    }
+
+
+
+
+
 
     companion object {
         /**

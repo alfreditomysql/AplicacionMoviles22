@@ -1,47 +1,193 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    tools:context=".HomeFragment">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/topBar"
+    <!-- Toolbar personalizada -->
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="20dp"
-        android:paddingEnd="20dp"
-        android:paddingTop="15dp"
-        android:paddingBottom="1dp"
-        android:elevation="10dp"
-        android:gravity="center"
-        android:background="#FFFFFF"
-        android:layout_alignParentTop="true">
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_marginBottom="0dp">
 
+        <!-- Botón de retroceso -->
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="8dp"
+
+            android:contentDescription="Atrás"/>
+
+        <!-- Título -->
         <TextView
-            android:id="@+id/usurio"
+            android:id="@+id/toolbarTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Usuario"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/home"/>
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_gravity="center"/>
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1"/>
+        <!-- Botón de búsqueda con margen -->
+        <ImageButton
+            android:id="@+id/btnSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:padding="4dp"
+
+            android:contentDescription="Buscar"
+            android:layout_gravity="end"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- ImageView para la imagen de portada -->
+    <RelativeLayout
+        android:id="@+id/rlImageViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="-8dp">
 
         <ImageView
+            android:id="@+id/imageViewPortada"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/portada"
+            android:contentDescription="Imagen de portada"/>
 
-            android:id="@+id/logout_icon"
-            android:layout_width="45dp"
+        <!-- Círculo blanco para la imagen de perfil del usuario -->
+        <FrameLayout
+            android:id="@+id/flProfileCircle"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="0dp"
+            android:background="@drawable/profile_image">
+
+            <!-- Imagen de perfil del usuario -->
+            <ImageView
+                android:id="@+id/imageViewPerfil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="Imagen de perfil"
+                android:scaleType="centerCrop"
+                />
+
+            <!-- Botón para cambiar la imagen de perfil -->
+            <ImageButton
+                android:id="@+id/btnCambiarImagenPerfil"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|end"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="?attr/selectableItemBackground"
+                android:src="@drawable/baseline_camera_alt_24"
+                android:contentDescription="Cambiar imagen de perfil"/>
+        </FrameLayout>
+
+        <!-- Botón para cambiar la imagen de portada -->
+        <ImageButton
+            android:id="@+id/btnCambiarImagen"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:adjustViewBounds="true"
-            android:src="@drawable/baseline_logout_24"/>
-    </LinearLayout>
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="16dp"
+            android:background="@drawable/baseline_camera_alt_24"
+            android:contentDescription="Cambiar imagen"/>
+    </RelativeLayout>
 
+    <TextView
+        android:id="@+id/textViewNombreUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Usuario de prueba"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:layout_below="@id/rlImageViewContainer"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"/>
 
-</FrameLayout>
+    <!-- Botón para cambiar el nombre -->
+    <ImageButton
+        android:id="@+id/btnCambiarNombre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewNombreUsuario"
+        android:layout_alignBottom="@id/textViewNombreUsuario"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/baseline_edit_24"
+        android:contentDescription="Cambiar nombre"
+        android:layout_marginStart="8dp"/>
+
+    <TextView
+        android:id="@+id/textViewNumeroAmigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewNombreUsuario"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" amigos"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:layout_toEndOf="@id/textViewNumeroAmigos"
+        android:layout_alignBottom="@id/textViewNumeroAmigos"/>
+
+    <TextView
+        android:id="@+id/descripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="descripcion"
+        android:textSize="14sp"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        android:layout_below="@id/textViewNumeroAmigos"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="4dp"/>
+
+    <ImageButton
+        android:id="@+id/btnCambiarDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/descripcion"
+        android:layout_alignBottom="@id/descripcion"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@drawable/baseline_edit_24"
+        android:contentDescription="Cambiar nombre"
+        android:layout_marginStart="8dp"/>
+
+    <ImageButton
+        android:id="@+id/btnTresPuntos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descripcion"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:padding="8dp"
+        android:src="@drawable/baseline_more_horiz_24"
+        android:contentDescription="Más opciones"/>
+</RelativeLayout>

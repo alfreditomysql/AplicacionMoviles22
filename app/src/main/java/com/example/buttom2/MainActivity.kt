@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.animation.Animation
 import android.view.animation.ScaleAnimation
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.example.buttom2.databinding.ActivityMainBinding
@@ -27,6 +29,7 @@ class MainActivity : AppCompatActivity() {
         // Obtener referencia al ImageView de la lupa utilizando View Binding
         val lupaImageView: ImageView = binding.lupa
 
+
         // Agregar OnClickListener al ImageView de la lupa
         lupaImageView.setOnClickListener {
             // Abrir SearchActivity cuando se haga clic en la lupa
@@ -45,7 +48,8 @@ class MainActivity : AppCompatActivity() {
             binding.homeLayout,
             binding.likeLayout,
             binding.notificationLayout,
-            binding.profileLayout
+            binding.profileLayout,
+
         )
 
         viewPager.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {

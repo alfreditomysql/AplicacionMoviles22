@@ -35,7 +35,7 @@ class Register : AppCompatActivity() {
 
         txtPassword = findViewById(R.id.password1)
         txtConfirmPassword = findViewById(R.id.passwordConfirm)
-        
+
         //binding.btnRegister.setOnClickListener { validate() }
         binding.iniciarSesion.setOnClickListener { goLoginActivity() }
         binding.btnRegister.setOnClickListener{ clickBtnRegister() }
@@ -113,7 +113,7 @@ class Register : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.141.92:8000/api/v1/register"
+        val url = "http://192.168.0.9:8000/api/v1/register"
         val body = JSONObject().apply{
             put("name",name)
             put("email",email)
