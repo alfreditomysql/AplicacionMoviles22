@@ -1,0 +1,452 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/white"
+                android:elevation="4dp"
+                android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+                <!-- Icono de retroceso -->
+                <ImageButton
+                    android:id="@+id/btn_back"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:src="@drawable/baseline_arrow_back_24" />
+
+                <!-- Texto "Editar perfil" -->
+                <TextView
+                    android:id="@+id/tv_edit_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar perfil"
+                    android:textColor="@android:color/black"
+                    android:textSize="18sp"
+                    android:layout_centerInParent="true"/>
+
+            </androidx.appcompat.widget.Toolbar>
+            <View
+                android:id="@+id/lineagris"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/toolbar"
+                android:layout_marginTop="2dp"/>
+
+            <LinearLayout
+                android:id="@+id/fotoperfil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lineagris"
+                android:padding="4dp"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <!-- Texto "Foto de perfil" a la izquierda -->
+                <TextView
+                    android:id="@+id/tv_photo_profile"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto de perfil"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Espacio entre los textos -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!-- Texto "Editar" a la derecha -->
+                <TextView
+                    android:id="@+id/tv_edit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Editar"
+                    android:textColor="@color/azulFacebook"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/flProfileCircle"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:srcCompat="@drawable/profile_image"
+                    android:scaleType="centerCrop"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
+            </FrameLayout>
+
+            <View
+                android:id="@+id/lineagris2"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/flProfileCircle"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:id="@+id/fotoPortada"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lineagris"
+                android:padding="4dp"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <!-- Texto "Foto de perfil" a la izquierda -->
+                <TextView
+                    android:id="@+id/photo_portada"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Foto de portada"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Espacio entre los textos -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!-- Texto "Editar" a la derecha -->
+                <TextView
+                    android:id="@+id/edit2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Editar"
+                    android:textColor="@color/azulFacebook"
+                    android:textSize="16sp"
+                    android:layout_marginEnd="16dp"/>
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/portadapa"
+                android:layout_width="match_parent"
+                android:layout_height="240dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/portada"/>
+            </FrameLayout>
+
+            <View
+                android:id="@+id/lineagris3"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/portadapa"
+                android:layout_marginTop="0dp"/>
+
+            <LinearLayout
+                android:id="@+id/presentacion"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lineagris"
+                android:padding="4dp"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <!-- Texto "Foto de perfil" a la izquierda -->
+                <TextView
+                    android:id="@+id/presentacionnoc"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Presentación"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Espacio entre los textos -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!-- Texto "Editar" a la derecha -->
+                <TextView
+                    android:id="@+id/edit3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Editar"
+                    android:textColor="@color/azulFacebook"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@id/presentacion"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:text="hola soy un usuario de esta aplicacion"/>
+
+            <View
+                android:id="@+id/lineagris4"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/presentacion"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:id="@+id/Detalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lineagris"
+                android:padding="4dp"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <!-- Texto "Foto de perfil" a la izquierda -->
+                <TextView
+                    android:id="@+id/Detallestext"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Detalles"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Espacio entre los textos -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!-- Texto "Editar" a la derecha -->
+                <TextView
+                    android:id="@+id/edit4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Editar"
+                    android:textColor="@color/azulFacebook"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <!-- Detalles con iconos -->
+            <TextView
+                android:id="@+id/textViewDetalles"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Detalles"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_below="@id/lineagris2"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="16dp"/>
+
+            <!-- Botón de Detalles -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewDetalles"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textViewDetalles"
+                android:layout_marginTop="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="8dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp">
+
+                    <!-- Icono + Estudio en "nombre de escuela" -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_school"
+                            android:contentDescription="Icono de Estudio"
+                            app:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estudio en Nombre de Escuela"
+                            android:textColor="#000000"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <!-- Icono + Vive en "lugar donde vive" -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_home"
+                            android:contentDescription="Icono de Vive"
+                            app:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Vive en Lugar donde Vive"
+                            android:textColor="#000000"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <!-- Icono + De "ubicación" -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/ic_location_city"
+                            android:contentDescription="Icono de De"
+                            app:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="De Ubicación"
+                            android:textColor="#000000"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+
+                    <!-- Icono + Ver información -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp">
+
+                        <ImageView
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:src="@drawable/baseline_more_horiz_24"
+                            android:contentDescription="Icono de Ver información"
+                            app:tint="#000000" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Ver información"
+                            android:textColor="#000000"
+                            android:layout_marginStart="8dp"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </androidx.cardview.widget.CardView>
+
+            <View
+                android:id="@+id/lineagris5"
+                android:layout_width="match_parent"
+                android:layout_height="4dp"
+                android:background="#CCCCCC"
+                android:layout_below="@id/cardViewDetalles"
+                android:layout_marginTop="10dp"/>
+
+            <LinearLayout
+                android:id="@+id/publicaciones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_below="@id/lineagris"
+                android:padding="4dp"
+                android:gravity="end"
+                android:layout_marginTop="6dp">
+
+                <!-- Texto "Foto de perfil" a la izquierda -->
+                <TextView
+                    android:id="@+id/publica"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Contenido Destacado"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_marginStart="16dp"/>
+
+                <!-- Espacio entre los textos -->
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+
+                <!-- Texto "Editar" a la derecha -->
+                <TextView
+                    android:id="@+id/edit5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="16dp"
+                    android:text="Editar"
+                    android:textColor="@color/azulFacebook"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/profile_image"/>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </androidx.core.widget.NestedScrollView>
+
+</RelativeLayout>
