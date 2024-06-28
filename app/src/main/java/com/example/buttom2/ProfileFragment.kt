@@ -1,10 +1,13 @@
 package com.example.buttom2
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageButton
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -34,7 +37,20 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_profile, container, false)
+        // Inflate the layout for this fragment
+        val view = inflater.inflate(R.layout.fragment_profile, container, false)
+
+        // Obtener referencia al botón de modificar
+        //val btnModificar = view.findViewById<ImageButton>(R.id.btnCambiarNombre)
+
+        // Configurar el clic del botón modificar
+        //btnModificar.setOnClickListener {
+            // Crear un Intent para iniciar CambiarNombreActivity
+        //    val intent = Intent(activity, CambiarDatosActivity::class.java)
+        //    startActivity(intent)
+        //}
+
+        return view
     }
 
     companion object {

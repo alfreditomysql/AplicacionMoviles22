@@ -2,14 +2,22 @@
     <!-- Base application theme. -->
     <style name="Theme.Buttom2" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_700</item>
-        <item name="colorOnPrimary">@color/white</item>
-        <!-- Primary brand color. -->
-        <item name="colorSecondary">@color/teal_200</item>
-        <item name="colorSecondaryVariant">@color/teal_700</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <!-- Primary brand color. -->
-        <item name="android:statusBarColor" tools:targetApi="1">?attr/colorPrimaryVariant</item>
+        <item name="colorPrimary">@color/blue_primary</item>
+        <item name="colorPrimaryVariant">@color/blue_primary_variant</item>
+        <item name="colorOnPrimary">@color/blue_on_primary</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_secondary</item>
+        <item name="colorSecondaryVariant">@color/blue_secondary_variant</item>
+        <item name="colorOnSecondary">@color/blue_on_secondary</item>
+        <!-- Background and surface colors. -->
+        <item name="android:colorBackground">@color/blue_background</item>
+        <item name="colorSurface">@color/blue_surface</item>
+        <item name="colorOnBackground">@color/blue_on_background</item>
+        <item name="colorOnSurface">@color/blue_on_surface</item>
+        <!-- Error color. -->
+        <item name="colorError">@color/blue_error</item>
+        <item name="colorOnError">@color/blue_on_error</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="21">@color/blue_primary_variant</item>
     </style>
 </resources>
