@@ -124,23 +124,23 @@
         android:layout_marginStart="16dp"
         android:layout_toStartOf="@id/btnTresPuntos">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_new_story"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="100dp"
+            android:layout_height="30dp"
             android:text="Publicar"
             android:textColor="#FFFFFF"
-            android:backgroundTint="#0000FF"
-            android:layout_marginEnd="40dp"/>
+            android:background="@drawable/background_button_elegante"
+            android:layout_marginEnd="10dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_edit_profile"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="120dp"
+            android:layout_height="30dp"
             android:text="Editar Perfil"
-            android:textColor="#000000"
-            android:backgroundTint="@color/gris"
-            android:layout_marginEnd="40dp"/>
+            android:textColor="#FFFFFF"
+            android:background="@drawable/background_button_elegante"
+            android:layout_marginEnd="10dp"/>
 
     </LinearLayout>
 

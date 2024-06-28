@@ -21,4 +21,18 @@
     <color name="profile_20">#335B37B7</color>
     <color name="gris">#9EC6C6C6</color>
     <color name="azulFacebook">#3b5998</color>
+
+    <!-- Define your color palette -->
+    <color name="blue_primary">#1976D2</color>
+    <color name="blue_primary_variant">#1565C0</color>
+    <color name="blue_secondary">#03A9F4</color>
+    <color name="blue_secondary_variant">#0288D1</color>
+    <color name="blue_background">#E3F2FD</color>
+    <color name="blue_surface">#BBDEFB</color>
+    <color name="blue_error">#D32F2F</color>
+    <color name="blue_on_primary">#FFFFFF</color>
+    <color name="blue_on_secondary">#000000</color>
+    <color name="blue_on_background">#000000</color>
+    <color name="blue_on_surface">#000000</color>
+    <color name="blue_on_error">#FFFFFF</color>
 </resources>

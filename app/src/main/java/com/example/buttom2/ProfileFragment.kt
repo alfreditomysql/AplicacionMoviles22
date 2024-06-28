@@ -41,14 +41,14 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         // Obtener referencia al botón de modificar
-        //val btnModificar = view.findViewById<ImageButton>(R.id.btnCambiarNombre)
+        val btnModificar = view.findViewById<Button>(R.id.btn_edit_profile)
 
         // Configurar el clic del botón modificar
-        //btnModificar.setOnClickListener {
+        btnModificar.setOnClickListener {
             // Crear un Intent para iniciar CambiarNombreActivity
-        //    val intent = Intent(activity, CambiarDatosActivity::class.java)
-        //    startActivity(intent)
-        //}
+            val intent = Intent(activity, EditProfile::class.java)
+            startActivity(intent)
+        }
 
         return view
     }
