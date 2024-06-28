@@ -5,9 +5,49 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
     tools:context=".EditPostActivity">
+
+    <LinearLayout
+        android:id="@+id/bottomBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:elevation="10dp"
+        android:background="#FFFFFF">
+
+        <ImageView
+            android:id="@+id/volver"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:src="@drawable/baseline_arrow_back_24"
+            android:layout_gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/addNoteHeading"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Editar Post"
+            android:textColor="@color/black"
+            android:layout_marginTop="6dp"
+            android:textSize="20sp"
+            android:gravity="center_vertical"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp"/>
+
+        <Button
+            android:id="@+id/editarButton"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:hint="Editar"
+            android:background="@drawable/background_button_elegante"
+            android:layout_gravity="center_vertical"
+            android:layout_marginEnd="5dp"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/editNoteHeading"
@@ -23,7 +63,7 @@
         android:id="@+id/saveButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/baseline_favorite_24"
+        android:src="@drawable/baseline_edit_24"
         android:layout_alignParentEnd="true"
         android:layout_alignTop="@+id/editNoteHeading"
         android:layout_marginEnd="10dp"
@@ -31,30 +71,36 @@
 
     <EditText
         android:id="@+id/updateTitleEditText"
-        android:layout_width="match_parent"
+        android:layout_width="390dp"
         android:layout_height="60dp"
-        android:hint="Introduce el titulo"
-        android:padding="12dp"
-        android:textSize="20sp"
-        android:layout_below="@id/editNoteHeading"
-        android:background="@drawable/background_e"
+        android:layout_below="@id/bottomBar"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_elegante"
+        android:hint="Introduce el titulo"
         android:maxLines="1"
-
+        android:padding="12dp"
+        android:textSize="18sp"
         />
 
     <EditText
         android:id="@+id/contentEditText"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:hint="Descripcion"
+        android:layout_width="390dp"
+        android:layout_height="400dp"
+        android:layout_below="@id/updateTitleEditText"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:background="@drawable/background_focus"
         android:gravity="top"
+        android:hint="Descripcion"
         android:padding="12dp"
         android:textSize="18sp"
-        android:background="@drawable/background_e"
-        android:layout_below="@id/updateTitleEditText"
-        android:layout_marginTop="12dp"
-
         />
 
 </RelativeLayout>

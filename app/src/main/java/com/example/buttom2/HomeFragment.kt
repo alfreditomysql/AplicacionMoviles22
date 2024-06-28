@@ -64,6 +64,11 @@ class HomeFragment : Fragment() {
             startActivity(intent)
         }
 
+        binding.addButton.setOnClickListener {
+            val intent = Intent(requireActivity(), NewPostActivity::class.java)
+            startActivity(intent)
+        }
+
         return view
     }
 

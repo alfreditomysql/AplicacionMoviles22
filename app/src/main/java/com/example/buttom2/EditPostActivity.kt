@@ -2,6 +2,7 @@ package com.example.buttom2
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
 import android.widget.Toast
 import com.example.buttom2.databinding.ActivityEditPostBinding
 
@@ -26,7 +27,16 @@ class EditPostActivity : AppCompatActivity() {
         binding.updateTitleEditText.setText(note.title)
         binding.contentEditText.setText(note.content)
 
-        binding.saveButton.setOnClickListener {
+
+        val flechaImageView: ImageView = findViewById(R.id.volver)
+
+        // Agregar OnClickListener al ImageView de la flecha
+        flechaImageView.setOnClickListener {
+            // Cerrar SearchActivity y volver al MainActivity
+            finish()
+        }
+
+        binding.editarButton.setOnClickListener {
             val newTitle = binding.updateTitleEditText.text.toString()
             val newContent = binding.contentEditText.text.toString()
 
