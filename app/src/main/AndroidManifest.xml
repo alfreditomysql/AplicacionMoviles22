@@ -25,7 +25,7 @@
             android:name=".NewPost"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".edit_profile"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
