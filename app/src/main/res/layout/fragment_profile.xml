@@ -4,38 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Toolbar personalizada -->
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        android:layout_marginBottom="0dp">
 
 
-
-        <!-- Título -->
-        <TextView
-            android:id="@+id/toolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Usuario"
-            android:textSize="18sp"
-            android:textColor="@android:color/black"
-            android:layout_gravity="center"/>
-
-
-    </androidx.appcompat.widget.Toolbar>
 
     <!-- ImageView para la imagen de portada -->
     <RelativeLayout
         android:id="@+id/rlImageViewContainer"
         android:layout_width="match_parent"
         android:layout_height="200dp"
-        android:layout_below="@id/toolbar"
+
         android:layout_marginTop="-8dp">
 
         <ImageView
@@ -139,7 +116,7 @@
 
     <LinearLayout
         android:id="@+id/button_container"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_below="@id/descripcion"
@@ -156,10 +133,10 @@
             android:backgroundTint="#0000FF"
             android:layout_marginEnd="40dp"/>
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_edit_profile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:text="Editar Perfil"
             android:textColor="#000000"
             android:backgroundTint="@color/gris"
@@ -211,6 +188,7 @@
             android:id="@+id/btn_fotos"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:text="Fotos"
             android:textColor="#000000"
             android:backgroundTint="#FFFFFF"
@@ -254,6 +232,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp">
 
@@ -285,7 +265,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginTop="8dp">
+                android:layout_marginTop="8dp"
+                >
 
                 <ImageView
                     android:layout_width="24dp"
