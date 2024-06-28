@@ -15,15 +15,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:layout_marginBottom="0dp">
 
-        <!-- Botón de retroceso -->
-        <ImageButton
-            android:id="@+id/btnBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="8dp"
 
-            android:contentDescription="Atrás"/>
 
         <!-- Título -->
         <TextView
@@ -35,17 +27,7 @@
             android:textColor="@android:color/black"
             android:layout_gravity="center"/>
 
-        <!-- Botón de búsqueda con margen -->
-        <ImageButton
-            android:id="@+id/btnSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:padding="4dp"
 
-            android:contentDescription="Buscar"
-            android:layout_gravity="end"/>
     </androidx.appcompat.widget.Toolbar>
 
     <!-- ImageView para la imagen de portada -->
@@ -72,17 +54,14 @@
             android:layout_alignParentStart="true"
             android:layout_alignParentBottom="true"
             android:layout_marginStart="16dp"
-            android:layout_marginBottom="0dp"
-            android:background="@drawable/profile_image">
+            android:layout_marginBottom="0dp">
 
-            <!-- Imagen de perfil del usuario -->
-            <ImageView
-                android:id="@+id/imageViewPerfil"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:contentDescription="Imagen de perfil"
+            <com.google.android.material.imageview.ShapeableImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/profile_image"
                 android:scaleType="centerCrop"
-                />
+                app:shapeAppearanceOverlay="@style/roundedImageViewRounded"/>
 
             <!-- Botón para cambiar la imagen de perfil -->
             <ImageButton
@@ -96,6 +75,8 @@
                 android:src="@drawable/baseline_camera_alt_24"
                 android:contentDescription="Cambiar imagen de perfil"/>
         </FrameLayout>
+
+
 
         <!-- Botón para cambiar la imagen de portada -->
         <ImageButton
@@ -122,17 +103,6 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"/>
 
-    <!-- Botón para cambiar el nombre -->
-    <ImageButton
-        android:id="@+id/btnCambiarNombre"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/textViewNombreUsuario"
-        android:layout_alignBottom="@id/textViewNombreUsuario"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/baseline_edit_24"
-        android:contentDescription="Cambiar nombre"
-        android:layout_marginStart="8dp"/>
 
     <TextView
         android:id="@+id/textViewNumeroAmigos"
@@ -167,16 +137,35 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="4dp"/>
 
-    <ImageButton
-        android:id="@+id/btnCambiarDescripcion"
+    <LinearLayout
+        android:id="@+id/button_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/descripcion"
-        android:layout_alignBottom="@id/descripcion"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:src="@drawable/baseline_edit_24"
-        android:contentDescription="Cambiar nombre"
-        android:layout_marginStart="8dp"/>
+        android:orientation="horizontal"
+        android:layout_below="@id/descripcion"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_toStartOf="@id/btnTresPuntos">
+
+        <Button
+            android:id="@+id/btn_new_story"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Publicar"
+            android:textColor="#FFFFFF"
+            android:backgroundTint="#0000FF"
+            android:layout_marginEnd="40dp"/>
+
+        <Button
+            android:id="@+id/btn_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Editar Perfil"
+            android:textColor="#000000"
+            android:backgroundTint="@color/gris"
+            android:layout_marginEnd="40dp"/>
+
+    </LinearLayout>
 
     <ImageButton
         android:id="@+id/btnTresPuntos"
@@ -190,4 +179,175 @@
         android:padding="8dp"
         android:src="@drawable/baseline_more_horiz_24"
         android:contentDescription="Más opciones"/>
+
+    <View
+        android:id="@+id/lineagris"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:background="#CCCCCC"
+        android:layout_below="@id/btnTresPuntos"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Barra con botones -->
+    <LinearLayout
+        android:id="@+id/barra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/lineagris"
+        android:padding="8dp">
+
+        <Button
+            android:id="@+id/btn_publicaciones"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#FFFFFF"
+            android:text="Publicaciones"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+
+        <Button
+            android:id="@+id/btn_fotos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fotos"
+            android:textColor="#000000"
+            android:backgroundTint="#FFFFFF"
+            android:textSize="10sp"/>
+
+    </LinearLayout>
+    <View
+        android:id="@+id/lineagris2"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="#CCCCCC"
+        android:layout_below="@id/barra"
+        android:layout_marginTop="10dp"/>
+
+    <!-- Detalles con iconos -->
+    <TextView
+        android:id="@+id/textViewDetalles"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Detalles"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_below="@id/lineagris2"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Botón de Detalles -->
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardViewDetalles"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewDetalles"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardCornerRadius="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <!-- Icono + Estudio en "nombre de escuela" -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_school"
+                    android:contentDescription="Icono de Estudio"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Estudio en Nombre de Escuela"
+                    android:textColor="#000000"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Icono + Vive en "lugar donde vive" -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_home"
+                    android:contentDescription="Icono de Vive"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Vive en Lugar donde Vive"
+                    android:textColor="#000000"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Icono + De "ubicación" -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_location_city"
+                    android:contentDescription="Icono de De"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="De Ubicación"
+                    android:textColor="#000000"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+
+            <!-- Icono + Ver información -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/baseline_more_horiz_24"
+                    android:contentDescription="Icono de Ver información"
+                    app:tint="#000000" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Ver información"
+                    android:textColor="#000000"
+                    android:layout_marginStart="8dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
 </RelativeLayout>
