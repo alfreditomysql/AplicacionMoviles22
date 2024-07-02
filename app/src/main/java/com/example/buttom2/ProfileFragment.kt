@@ -41,7 +41,8 @@ class ProfileFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_profile, container, false)
 
         // Obtener referencia al botón de modificar
-        val btnModificar = view.findViewById<Button>(R.id.btn_edit_profile)
+        val btnModificar = view.findViewById<ImageButton>(R.id.btnTresPuntos)
+
 
         // Configurar el clic del botón modificar
         btnModificar.setOnClickListener {
