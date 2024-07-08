@@ -1,6 +1,7 @@
 package com.example.buttom2
 
 import android.content.Intent
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -134,6 +135,7 @@ class Register : AppCompatActivity() {
             Response.ErrorListener { error ->
                 // Maneja los errores
                 Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                Log.e("TAG", "Error: ${error.message}")
             }
         )
 

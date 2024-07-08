@@ -9,6 +9,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.example.buttom2.databinding.FragmentHomeBinding
 import androidx.recyclerview.widget.LinearLayoutManager
+import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
+import com.android.volley.Request
+import com.android.volley.RequestQueue
+import com.android.volley.Response
+import com.android.volley.toolbox.JsonArrayRequest
+import com.android.volley.toolbox.Volley
+import org.json.JSONException
+import org.json.JSONObject
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -31,6 +40,9 @@ class HomeFragment : Fragment() {
 
     private lateinit var db: NotesDataBaseHelper
     private lateinit var notesAdapter: NotesAdapter
+
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var requestQueue: RequestQueue
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

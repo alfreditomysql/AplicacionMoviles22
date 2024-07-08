@@ -9,12 +9,12 @@ class SearchActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search)
 
-        val flechaImageView: ImageView = findViewById(R.id.flecha)
+        //val flechaImageView: ImageView = findViewById(R.id.flecha)
 
         // Agregar OnClickListener al ImageView de la flecha
-        flechaImageView.setOnClickListener {
+        //flechaImageView.setOnClickListener {
             // Cerrar SearchActivity y volver al MainActivity
-            finish()
-        }
+        //    finish()
+        //}
     }
 }

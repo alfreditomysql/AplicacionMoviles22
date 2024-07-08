@@ -26,22 +26,12 @@ class MainActivity : AppCompatActivity() {
         val viewPager: ViewPager2 = binding.viewPager
         viewPager.adapter = ViewPagerAdapter(this)
 
-        // Obtener referencia al ImageView de la lupa utilizando View Binding
-        val lupaImageView: ImageView = binding.lupa
-
-
-        // Agregar OnClickListener al ImageView de la lupa
-        lupaImageView.setOnClickListener {
-            // Abrir SearchActivity cuando se haga clic en la lupa
-            val intent = Intent(this, SearchActivity::class.java)
-            startActivity(intent)
-        }
 
         val tabIcons = listOf(
             R.drawable.baseline_home_s_24,
             R.drawable.baseline_favorite_s_24,
-            R.drawable.baseline_notifications_s_24,
-            R.drawable.baseline_profile_s_24
+            R.drawable.baseline_search_s_24,
+            R.drawable.profile_image
         )
 
         val layouts = listOf(
@@ -80,16 +70,16 @@ class MainActivity : AppCompatActivity() {
     private fun updateTabIcons(selectedIcon: Int, selectedLayout: LinearLayout) {
         val icons = mapOf(
             binding.homeIv to R.drawable.baseline_home_24,
-            binding.likeIv to R.drawable.baseline_favorite_24,
+            binding.searchIv to R.drawable.baseline_search_24,
             binding.notificationIv to R.drawable.baseline_notifications_24,
-            binding.profileIv to R.drawable.baseline_profile_24
+            binding.profileIv to R.drawable.profile_image
         )
 
         val selectedIcons = mapOf(
             R.drawable.baseline_home_s_24 to binding.homeIv,
-            R.drawable.baseline_favorite_s_24 to binding.likeIv,
+            R.drawable.baseline_search_s_24 to binding.searchIv,
             R.drawable.baseline_notifications_s_24 to binding.notificationIv,
-            R.drawable.baseline_profile_s_24 to binding.profileIv
+            R.drawable.profile_image to binding.profileIv
         )
 
         icons.forEach { (imageView, icon) ->
@@ -109,9 +99,9 @@ class MainActivity : AppCompatActivity() {
     private fun getBackgroundResource(selectedIcon: Int): Int {
         return when (selectedIcon) {
             R.drawable.baseline_home_s_24 -> R.drawable.round_back_home_100
-            R.drawable.baseline_favorite_s_24 -> R.drawable.round_back_favorite_100
+            R.drawable.baseline_search_s_24 -> R.drawable.round_back_favorite_100
             R.drawable.baseline_notifications_s_24 -> R.drawable.round_back_notification_100
-            R.drawable.baseline_profile_s_24 -> R.drawable.round_back_profile_100
+            R.drawable.profile_image -> R.drawable.round_back_profile_100
             else -> android.R.color.transparent
         }
     }

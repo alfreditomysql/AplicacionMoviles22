@@ -12,7 +12,7 @@ class ViewPagerAdapter(fragmentActivity: FragmentActivity) : FragmentStateAdapte
 
     override fun createFragment(position: Int): Fragment {
         return when (position) {
-            0 -> HomeFragment()
+            0 -> HomeIndex()
             1 -> LikeFragment()
             2 -> NotificationFragment()
             3 -> ProfileFragment()
