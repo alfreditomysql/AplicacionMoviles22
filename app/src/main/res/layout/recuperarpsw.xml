@@ -1,0 +1,76 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <!-- Icono de retroceso -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <!-- Texto "recuperar contraseña" -->
+        <TextView
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recuperar Contraseña"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+    </androidx.appcompat.widget.Toolbar>
+
+    <!-- Texto "Introduce tu dirección de correo electrónico" -->
+    <TextView
+        android:id="@+id/tv_email_prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="8dp"
+        android:layout_marginStart="16dp"
+        android:text="Introduce tu dirección de correo electrónico"
+        android:textSize="13sp"
+        android:textColor="@android:color/black"/>
+
+    <EditText
+        android:id="@+id/et_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_email_prompt"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/edittext_background"
+        android:hint="Correo electrónico"
+        android:hintTextColor="#808080"
+        android:inputType="textEmailAddress"
+        android:padding="12dp"/>
+
+    <!-- Botón "Buscar cuenta" -->
+    <Button
+        android:id="@+id/btn_search_account"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/et_email"
+        android:layout_marginTop="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Buscar cuenta"
+        android:textColor="@android:color/white"
+        android:background="@drawable/button_rounded_background"
+        android:textAllCaps="false"/>
+
+</RelativeLayout>

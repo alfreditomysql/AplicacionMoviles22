@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <!-- Icono de retroceso -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <!-- Texto "recuperar contraseña" -->
+        <TextView
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresa el código de seguridad"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/tvInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comprueba si recibiste un correo electrónico con tu código de 6 dígitos."
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/etCode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInstruction"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/edit_text_background"
+        android:hint="Ingresa el código"
+        android:inputType="number"
+        android:padding="10dp" />
+
+    <TextView
+        android:id="@+id/codigoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviamos el codigo a: "
+        android:layout_below="@id/etCode"
+        android:layout_marginTop="16dp" />
+    <LinearLayout
+        android:id="@+id/correo1"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_below="@id/codigoa"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/background_elegante">
+
+        <TextView
+            android:id="@+id/correo"
+            android:layout_width="362dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="CORREOPRUEBA@HOTMAIL.COM" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿No recibiste el código?"
+        android:layout_below="@id/correo1"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tvResend"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancelar"
+            android:textColor="@color/black"
+            android:backgroundTint="#CDCDCD"
+            android:layout_marginEnd="12dp"/>
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Continuar"
+            android:layout_marginStart="12dp"/>
+    </LinearLayout>
+
+</RelativeLayout>
