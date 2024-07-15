@@ -16,6 +16,7 @@ class NotesDataBaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
         private const val COLUMN_TITLE = "title"
         private const val COLUMN_CONTENT = "content"
         private const val COLUMN_CREATION_TIME = "creation_time"
+        private  const val COLUMN_CATEGORY = "categoria"
 
     }
     override fun onCreate(db: SQLiteDatabase?) {
@@ -52,8 +53,9 @@ class NotesDataBaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
             val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
             val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
             val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+            val selectedCategory = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
 
-            val note = Note(id, title, content)
+            val note = Note(id, title, content, selectedCategory)
             notelist.add(note)
         }
         cursor.close()
@@ -83,10 +85,11 @@ class NotesDataBaseHelper(context: Context): SQLiteOpenHelper(context, DATABASE_
         val id = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_ID))
         val title = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TITLE))
         val content = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CONTENT))
+        val selectedCategory = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_CATEGORY))
 
         cursor.close()
         db.close()
-        return  Note(id, title, content)
+        return  Note(id, title, content, selectedCategory)
     }
 
     fun deleteNote(noteId: Int){
