@@ -90,13 +90,13 @@ class Register : AppCompatActivity() {
         val nombre = binding.passwordinput2.editText?.text.toString()
         val nombre2 = binding.passwordinput1.editText?.text.toString()
         return if (nombre != nombre2){
-            binding.passwordinput2.error = "Las contraseñas no son iguales"
+            binding.passwordConfirm.error = "Las contraseñas no son iguales"
             false
         } else if (nombre.isEmpty()) {
-            binding.passwordinput2.error = "Field can not be empty"
+            binding.passwordConfirm.error = "Field can not be empty"
             false
         }else{
-            binding.passwordinput2.error = null
+            binding.passwordConfirm.error = null
             true
         }
     }
@@ -114,7 +114,7 @@ class Register : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.9:8000/api/v1/register"
+        val url = "http://192.168.0.11:8000/api/v1/register"
         val body = JSONObject().apply{
             put("name",name)
             put("email",email)
@@ -131,6 +131,7 @@ class Register : AppCompatActivity() {
             Response.Listener { response ->
                 // Maneja la respuesta de la API
                 Toast.makeText(this, "Registro exitoso", Toast.LENGTH_SHORT).show()
+                goMainActivity()
             },
             Response.ErrorListener { error ->
                 // Maneja los errores
@@ -140,6 +141,6 @@ class Register : AppCompatActivity() {
         )
 
         requestQueue.add(jsonObjectRequest)
-        goMainActivity()
+
     }
 }

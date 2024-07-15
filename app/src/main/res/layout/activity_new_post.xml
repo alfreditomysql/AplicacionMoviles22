@@ -72,7 +72,7 @@
         android:id="@+id/contentEditText"
         android:layout_width="390dp"
         android:layout_height="400dp"
-        android:layout_below="@id/titleEditText"
+        android:layout_below="@id/categoriaNew"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
@@ -85,10 +85,10 @@
         android:textSize="18sp" />
 
     <Spinner
-        android:id="@+id/categoria"
+        android:id="@+id/categoriaNew"
         android:layout_width="390dp"
         android:layout_height="wrap_content"
-        android:layout_below="@id/contentEditText"
+        android:layout_below="@id/titleEditText"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"

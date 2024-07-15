@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".IngresarCodigo">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
+
+        <!-- Icono de retroceso -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:src="@drawable/baseline_arrow_back_24" />
+
+        <!-- Texto "recuperar contraseña" -->
+        <TextView
+            android:id="@+id/tv_edit_profile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Ingresa el código de seguridad"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:layout_centerInParent="true"/>
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <TextView
+        android:padding="16dp"
+        android:id="@+id/tvInstruction"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Comprueba si recibiste un correo electrónico con tu código de 6 dígitos."
+        android:layout_below="@id/toolbar"
+        android:layout_marginTop="16dp"
+        android:layout_centerHorizontal="true"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/ingresarCodigo"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvInstruction"
+        android:layout_marginLeft="15dp"
+        android:inputType="number"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etCode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/edittext_background2"
+            android:hint="Codigo"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:padding="16dp"
+        android:id="@+id/codigoa"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enviamos el codigo a: correodejemplo@hotmail.com"
+        android:textStyle="bold"
+        android:layout_below="@id/ingresarCodigo"
+        android:layout_marginTop="16dp" />
+
+
+
+    <TextView
+        android:id="@+id/tvResend"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="¿No recibiste el código?"
+        android:layout_below="@id/codigoa"
+        android:layout_marginTop="8dp"
+        android:textColor="@android:color/holo_blue_light"
+        android:layout_centerHorizontal="true"/>
+
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_below="@id/tvResend"
+        android:layout_marginTop="16dp"
+        android:gravity="center">
+
+
+        <Button
+            android:id="@+id/btnContinue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Continuar"
+            android:layout_marginStart="0dp"/>
+    </LinearLayout>
+
+</RelativeLayout>

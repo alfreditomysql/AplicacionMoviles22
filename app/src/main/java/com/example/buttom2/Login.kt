@@ -12,6 +12,8 @@ import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import com.example.buttom2.databinding.ActivityLoginBinding
 import com.example.buttom2.databinding.ActivityRegisterBinding
+import com.google.android.material.textfield.TextInputEditText
+import org.json.JSONException
 import org.json.JSONObject
 
 class Login : AppCompatActivity() {
@@ -31,6 +33,7 @@ class Login : AppCompatActivity() {
         //binding.btnIniciarSesion.setOnClickListener { validate() }
         binding.crearCuenta.setOnClickListener { goRegisterActivity() }
         binding.btnIniciarSesion.setOnClickListener{ clickBtnLogin() }
+        binding.recuperarPassword.setOnClickListener { goRecuperar() }
     }
 
     private fun validate (){
@@ -50,6 +53,11 @@ class Login : AppCompatActivity() {
         finish()
     }
 
+    private fun goRecuperar(){
+        startActivity(Intent(this, RecuperarPassword::class.java))
+        finish()
+    }
+
     private fun goRegisterActivity(){
         startActivity(Intent(this, Register::class.java))
         finish()
@@ -58,10 +66,10 @@ class Login : AppCompatActivity() {
     private fun validateCorreo () : Boolean {
         val nombre = binding.correo1.editText?.text.toString()
         return if (nombre.isEmpty()) {
-            binding.correo1.error = "Field can not be empty"
+            binding.emailLogin.error = "Field can not be empty"
             false
         }else{
-            binding.correo1.error = null
+            binding.emailLogin.error = null
             true
         }
     }
@@ -69,10 +77,10 @@ class Login : AppCompatActivity() {
     private fun validatePassword () : Boolean {
         val nombre = binding.password1.editText?.text.toString()
         return if (nombre.isEmpty()) {
-            binding.password1.error = "Field can not be empty"
+            binding.passwordLogin.error = "Field can not be empty"
             false
         }else{
-            binding.password1.error = null
+            binding.passwordLogin.error = null
             true
         }
     }
@@ -88,7 +96,7 @@ class Login : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.9:8000/api/v1/login"
+        val url = "http://192.168.0.11:8000/api/v1/login"
         val body = JSONObject().apply{
             put("email",email)
             put("password",pass)
@@ -101,17 +109,37 @@ class Login : AppCompatActivity() {
             url,
             body,
             Response.Listener { response ->
-                // Maneja la respuesta de la API
-                Toast.makeText(this, "Logeado exitoso", Toast.LENGTH_SHORT).show()
+                try {
+                    // Extrae el token desde "plain-text-token"
+                    if (response.has("plain-text-token")) {
+                        val token = response.getString("plain-text-token")
+                        Log.d("Login", "Token obtenido: $token")
+
+                        // Guarda el token en SharedPreferences
+                        val sharedPreferences = getSharedPreferences("YourSharedPreferences", MODE_PRIVATE)
+                        val editor = sharedPreferences.edit()
+                        editor.putString("auth_token", token)
+                        editor.apply()
+
+                        // Continúa a la actividad principal
+                        goMainActivity()
+                    } else {
+                        Log.e("Login", "No se encontró el token en la respuesta.")
+                        Toast.makeText(this, "No se encontró el token en la respuesta.", Toast.LENGTH_SHORT).show()
+                    }
+                } catch (e: JSONException) {
+                    Log.e("Login", "Error al parsear la respuesta JSON: ${e.message}")
+                    Toast.makeText(this, "Error al parsear la respuesta JSON.", Toast.LENGTH_SHORT).show()
+                }
             },
             Response.ErrorListener { error ->
                 // Maneja los errores
-                Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
-                Log.e("TAG", "Error: ${error.message}")
+                Toast.makeText(this, "El correo o la contraseña son incorrectos", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(this, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
+                //Log.e("TAG", "Error: ${error.message}")
             }
         )
 
         requestQueue.add(jsonObjectRequest)
-        goMainActivity()
     }
 }

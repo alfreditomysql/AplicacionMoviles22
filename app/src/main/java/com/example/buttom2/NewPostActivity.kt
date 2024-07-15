@@ -9,14 +9,13 @@ import com.example.buttom2.databinding.ActivityNewPostBinding
 
 class NewPostActivity : AppCompatActivity() {
     private lateinit var binding: ActivityNewPostBinding
-    private lateinit var db: NotesDataBaseHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityNewPostBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        db = NotesDataBaseHelper(this)
+        binding.crearButton.setOnClickListener{ clickBtnCrear() }
 
         val flechaImageView: ImageView = findViewById(R.id.volver)
 
@@ -29,21 +28,39 @@ class NewPostActivity : AppCompatActivity() {
         val categorias = arrayOf("Personal", "Trabajo", "Estudio", "Otro")
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.categoria.adapter = adapter
+        binding.categoriaNew.adapter = adapter
 
-        binding.crearButton.setOnClickListener {
-            val title = binding.titleEditText.text.toString()
-            val content = binding.contentEditText.text.toString()
-            val selectedCategory = binding.categoria.selectedItem.toString()
 
-            if (title.isEmpty() || content.isEmpty()) {
-                Toast.makeText(this, "Por favor, ingresa un título y contenido", Toast.LENGTH_SHORT).show()
-            } else {
-                val note = Note(8, title, content, selectedCategory) // Asegúrate de tener el constructor de Note adecuado
-                db.insertNote(note)
-                finish()
-                Toast.makeText(this, "Nota guardada", Toast.LENGTH_SHORT).show()
-            }
+    }
+
+    private fun validateTitulo () : Boolean {
+        val titulo = binding.titleEditText.text.toString()
+        return if (titulo.isEmpty()) {
+            binding.titleEditText.error = "Field can not be empty"
+            false
+        }else{
+            binding.titleEditText.error = null
+            true
+        }
+    }
+
+    private fun validateDescripcion () : Boolean {
+        val descripcion = binding.contentEditText.text.toString()
+        return if (descripcion.isEmpty()) {
+            binding.contentEditText.error = "Field can not be empty"
+            false
+        }else{
+            binding.contentEditText.error = null
+            true
+        }
+    }
+
+    fun clickBtnCrear(){
+        val result = arrayOf(validateTitulo(), validateDescripcion())
+
+        if (false in result){
+            Toast.makeText(this, "Faltan llenar campos", Toast.LENGTH_SHORT).show()
+            return
         }
     }
 }

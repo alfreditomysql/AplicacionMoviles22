@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         val tabIcons = listOf(
             R.drawable.baseline_home_s_24,
-            R.drawable.baseline_favorite_s_24,
             R.drawable.baseline_search_s_24,
+            R.drawable.baseline_notifications_s_24,
             R.drawable.profile_image
         )
 

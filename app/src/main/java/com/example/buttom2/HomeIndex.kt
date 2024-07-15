@@ -96,7 +96,7 @@ class HomeIndex : Fragment() {
     }
 
     private fun fetchArticles() {
-        val url = "http://192.168.0.9:8000/api/v1/articles"
+        val url = "http://192.168.0.11:8000/api/v1/articles"
 
         val jsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET, url, null,
