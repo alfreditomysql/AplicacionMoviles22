@@ -20,14 +20,18 @@ class ArticleAdapter(private val articles: List<Article>) : RecyclerView.Adapter
     inner class ArticleViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val title: TextView = itemView.findViewById(R.id.titleArticle)
         private val content: TextView = itemView.findViewById(R.id.contentArticle)
-        //private val author: TextView = itemView.findViewById(R.id.author)
+        private val created_at: TextView = itemView.findViewById(R.id.created_at)
+        private val updated_at: TextView = itemView.findViewById(R.id.updated_at)
+        private val author: TextView = itemView.findViewById(R.id.author)
         private val category: TextView = itemView.findViewById(R.id.category)
 
 
         fun bind(article: Article) {
             title.text = article.title
             content.text = article.content
-            //author.text = article.author.name
+            created_at.text = article.created_at
+            updated_at.text = article.updated_at
+            author.text = article.author.name
             category.text = article.category.name
         }
     }
@@ -86,8 +90,7 @@ class ArticleAdapter(private val articles: List<Article>) : RecyclerView.Adapter
 
     override fun getItemCount(): Int = articles.size
     private fun removeItem(position: Int) {
-        val mutableArticles = articles.toMutableList()
-        mutableArticles.removeAt(position)
+        (articles as? MutableList)?.removeAt(position)
         notifyItemRemoved(position)
     }
 

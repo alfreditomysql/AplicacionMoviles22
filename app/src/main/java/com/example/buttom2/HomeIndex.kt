@@ -141,6 +141,8 @@ class HomeIndex : Fragment() {
                                 title = articleJson.getJSONObject("attributes").getString("title"),
                                 content = articleJson.getJSONObject("attributes")
                                     .getString("content"),
+                                created_at = articleJson.getJSONObject("attributes").getString("created-at"),
+                                updated_at = articleJson.getJSONObject("attributes").getString("updated-at"),
                                 category = Category(
                                     id = 0,  // ID temporal o nulo
                                     name = "Category name"  // Nombre temporal o nulo

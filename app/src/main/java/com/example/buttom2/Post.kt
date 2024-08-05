@@ -4,6 +4,8 @@ data class Article(
     val id: String,
     val title: String,
     val content: String,
+    val created_at: String,
+    val updated_at: String,
     val category: Category,
     val author: Author,
     val comments: List<Comment>
