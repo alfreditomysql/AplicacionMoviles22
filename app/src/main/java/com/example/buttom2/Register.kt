@@ -114,7 +114,7 @@ class Register : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.11:8000/api/v1/register"
+        val url = "http://192.168.0.10:8000/api/v1/register"
         val body = JSONObject().apply{
             put("name",name)
             put("email",email)

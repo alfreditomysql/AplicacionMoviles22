@@ -10,14 +10,16 @@ import android.content.Intent
 import android.util.Log
 import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.android.volley.Request
 import com.android.volley.RequestQueue
 import com.android.volley.Response
-import com.android.volley.toolbox.JsonArrayRequest
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
 import org.json.JSONException
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -96,7 +98,7 @@ class HomeIndex : Fragment() {
     }
 
     private fun fetchArticles() {
-        val url = "http://192.168.0.11:8000/api/v1/articles"
+        val url = "http://192.168.0.10:8000/api/v1/articles"
 
         val jsonObjectRequest = object : JsonObjectRequest(
             Request.Method.GET, url, null,
@@ -134,29 +136,47 @@ class HomeIndex : Fragment() {
                             }
                         }
 
-                        // No se pueden obtener los detalles de category y author aquí porque son URLs
                         articles.add(
                             Article(
-                                id = articleJson.getString("id"), // Cambiado a String por el formato JSON:API
+                                id = articleJson.getString("id"),
                                 title = articleJson.getJSONObject("attributes").getString("title"),
                                 content = articleJson.getJSONObject("attributes")
                                     .getString("content"),
-                                created_at = articleJson.getJSONObject("attributes").getString("created-at"),
-                                updated_at = articleJson.getJSONObject("attributes").getString("updated-at"),
+                                created_at = articleJson.getJSONObject("attributes")
+                                    .getString("created-at"),
+                                updated_at = articleJson.getJSONObject("attributes")
+                                    .getString("updated-at"),
                                 category = Category(
-                                    id = 0,  // ID temporal o nulo
-                                    name = "Category name"  // Nombre temporal o nulo
+                                    id = 0,
+                                    name = articleJson.getJSONObject("attributes")
+                                        .getString("category")
                                 ),
                                 author = Author(
-                                    id = 0,  // ID temporal o nulo
-                                    name = "Author name"  // Nombre temporal o nulo
+                                    id = 0,
+                                    name = articleJson.getJSONObject("attributes")
+                                        .getString("author")
                                 ),
                                 comments = comments
                             )
                         )
                     }
+
+                    // Ordenar la lista de artículos por fecha de creación en orden descendente
+                    articles.sortWith { a, b ->
+                        val aDate = parseDate(a.created_at)
+                        val bDate = parseDate(b.created_at)
+                        bDate.compareTo(aDate) // Ordenar de más reciente a más antiguo
+                    }
+
                     // Actualizar el RecyclerView con la lista de artículos
                     binding.notesRecyclerView.adapter = ArticleAdapter(articles)
+
+                    // Agregar logs para verificar el orden
+                    Log.d(
+                        "HomeIndex",
+                        "Articles ordered by date: ${articles.map { it.created_at }}"
+                    )
+
                 } catch (e: JSONException) {
                     e.printStackTrace()
                     Toast.makeText(context, "JSON Parsing error: ${e.message}", Toast.LENGTH_LONG)
@@ -178,4 +198,15 @@ class HomeIndex : Fragment() {
 
         requestQueue.add(jsonObjectRequest)
     }
+
+    private fun parseDate(dateString: String): Date {
+        val format = SimpleDateFormat("dd-MM-yy", Locale.getDefault())
+        return try {
+            format.parse(dateString) ?: Date()
+        } catch (e: ParseException) {
+            e.printStackTrace()
+            Date()
+        }
+    }
+
 }

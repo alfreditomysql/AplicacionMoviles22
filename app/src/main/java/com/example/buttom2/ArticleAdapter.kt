@@ -95,7 +95,7 @@ class ArticleAdapter(private val articles: List<Article>) : RecyclerView.Adapter
     }
 
     private fun deleteArticleFromApi(context: Context, articleId: String, token: String, callback: (Boolean) -> Unit) {
-        val url = "http://192.168.0.11:8000/api/v1/articles/$articleId" // Asegúrate de que esta URL es correcta
+        val url = "http://192.168.137.225:8000/api/v1/articles/$articleId" // Asegúrate de que esta URL es correcta
 
         val requestQueue: RequestQueue = Volley.newRequestQueue(context)
 

@@ -41,11 +41,7 @@ class EditPostActivity : AppCompatActivity() {
 
         binding.editarButton.setOnClickListener{ clickBtnEditar() }
 
-        // Configurar el Spinner
-        val categorias = arrayOf("Categoría 1", "Categoría 2", "Categoría 3")
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, categorias)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        binding.categoria.adapter = adapter
+
 
         //Flecha para volver
         val flechaImageView = findViewById<ImageView>(R.id.volver)
@@ -95,7 +91,7 @@ class EditPostActivity : AppCompatActivity() {
     }
 
     private fun updatePost(title: String, content: String) {
-        val url = "http://192.168.0.11:8000/api/v1/articles/$articleId"
+        val url = "http://192.168.137.225:8000/api/v1/articles/$articleId"
         // Imprimir el slug para depuración
         Log.d("EditPostActivity", "Updating post with slug: $articleId")
 

@@ -96,7 +96,7 @@ class Login : AppCompatActivity() {
             return
         }
 
-        val url = "http://192.168.0.11:8000/api/v1/login"
+        val url = "http://192.168.0.10:8000/api/v1/login"
         val body = JSONObject().apply{
             put("email",email)
             put("password",pass)

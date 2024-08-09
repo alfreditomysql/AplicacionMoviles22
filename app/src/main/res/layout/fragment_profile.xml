@@ -9,9 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -74,7 +71,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="cafe madero"
+                        android:text=""
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
 
@@ -88,13 +85,32 @@
                         android:contentDescription="Editar nombre" />
                 </LinearLayout>
 
+                <!-- Campo para editar el nombre -->
+                <EditText
+                    android:id="@+id/etNombre"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nuevo nombre"
+                    android:visibility="gone"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"/>
+
+                <!-- Botón para guardar el nuevo nombre -->
+                <Button
+                    android:id="@+id/btnGuardarNombre"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"/>
+
                 <View
                     android:id="@+id/lineagris"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:background="#CCCCCC"
-                    android:layout_below="@id/nombreprofile"
                     android:layout_marginTop="20dp"/>
+
                 <!-- Sección del correo -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -116,7 +132,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="example@example.com"
+                        android:text=""
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
 
@@ -130,13 +146,32 @@
                         android:contentDescription="Editar correo" />
                 </LinearLayout>
 
+                <!-- Campo para editar el correo -->
+                <EditText
+                    android:id="@+id/etCorreo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Nuevo correo"
+                    android:visibility="gone"
+                    android:layout_marginTop="16dp"
+                    android:padding="8dp"/>
+
+                <!-- Botón para guardar el nuevo correo -->
+                <Button
+                    android:id="@+id/btnGuardarCorreo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar"
+                    android:visibility="gone"
+                    android:layout_marginTop="8dp"/>
+
                 <View
                     android:id="@+id/lineagris2"
                     android:layout_width="match_parent"
                     android:layout_height="4dp"
                     android:background="#CCCCCC"
-                    android:layout_below="@id/nombreprofile"
                     android:layout_marginTop="20dp"/>
+
                 <!-- Sección de la contraseña -->
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -158,7 +193,7 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="********"
+                        android:text=""
                         android:textSize="18sp"
                         android:textColor="@android:color/black" />
 
@@ -172,17 +207,6 @@
                         android:contentDescription="Editar contraseña" />
                 </LinearLayout>
             </LinearLayout>
-
         </LinearLayout>
-
-
-
-
-
-
-
-
-
-
     </ScrollView>
 </RelativeLayout>
